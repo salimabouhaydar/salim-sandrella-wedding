@@ -3,174 +3,158 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#FFF7F1" />
-<title>Salim & Sandrella — Wedding Invitation</title>
-<meta name="description" content="With hearts full of joy, Salim & Sandrella invite you to celebrate their wedding on 22 August 2026 in Byblos, Jbeil." />
+<meta name="theme-color" content="#FBF6EF" />
+<title>Salim & Sandrella — 22 August 2026</title>
+<meta name="description" content="Salim & Sandrella are getting married on 22 August 2026 at Saydet Al Najat Church, Mina Byblos, Jbeil. Join us." />
 <meta property="og:title" content="Salim & Sandrella — 22 August 2026" />
 <meta property="og:description" content="Saydet Al Najat Church · Mina Byblos, Jbeil · 19:00" />
 <meta property="og:image" content="images/hero.jpg" />
 <meta property="og:type" content="website" />
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='54'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='56'%3E%F0%9F%92%92%3C/text%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Italiana&family=Inter:wght@300;400;500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet" />
+
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Opening screen inspired by digital invitation flow -->
-<div class="start-gate" id="startGate" role="dialog" aria-label="Start invitation">
-  <div class="gate-card">
-    <p class="gate-kicker" data-en="Wedding invitation" data-ar="دعوة زفاف">Wedding invitation</p>
-    <div class="gate-monogram">S <span>&amp;</span> S</div>
-    <h1 data-en="Salim & Sandrella" data-ar="سليم وسندريلا">Salim &amp; Sandrella</h1>
-    <p class="gate-date">22 · 08 · 2026</p>
-    <button class="gate-btn" id="startBtn" type="button">
-      <span data-en="Tap to start" data-ar="اضغطوا للبدء">Tap to start</span>
-    </button>
-    <p class="gate-swipe" data-en="Swipe to continue" data-ar="اسحبوا للمتابعة">Swipe to continue</p>
-  </div>
-</div>
-
+<!-- ============ LANGUAGE TOGGLE ============ -->
 <button class="lang-btn" id="langBtn" type="button" aria-label="Toggle language">
   <span data-show-when="en">عربي</span>
   <span data-show-when="ar">EN</span>
 </button>
 
-<!-- HERO -->
-<section class="hero panel" id="hero">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="floating-orb orb-one" aria-hidden="true"></div>
-  <div class="floating-orb orb-two" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <p class="hero-overline reveal" data-en="With hearts full of joy" data-ar="بقلوبٍ مليئة بالفرح">With hearts full of joy</p>
+    <p class="hero-overline reveal" data-en="Save the date" data-ar="احفظوا التاريخ">Save the date</p>
 
-    <blockquote class="verse reveal">
-      <p data-en="Therefore what God has joined together, let no one separate." data-ar="فالذي جمعه الله، لا يفرّقه إنسان.">Therefore what God has joined together, let no one separate.</p>
-      <cite data-en="Mark 10:9" data-ar="مرقس 10:9">Mark 10:9</cite>
-    </blockquote>
-
-    <h1 class="hero-names reveal" aria-label="Salim and Sandrella">
-      <span class="name" data-en="Salim" data-ar="سليم">Salim</span>
-      <span class="amp">&amp;</span>
-      <span class="name" data-en="Sandrella" data-ar="سندريلا">Sandrella</span>
+    <h1 class="hero-names">
+      <span class="name name-left reveal" data-en="Salim" data-ar="سليم">Salim</span>
+      <span class="ampersand reveal" aria-hidden="true">
+        <svg viewBox="0 0 80 80" width="64" height="64" aria-hidden="true">
+          <circle cx="32" cy="40" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="50" cy="40" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="name name-right reveal" data-en="Sandrella" data-ar="سندريلا">Sandrella</span>
     </h1>
 
-    <p class="hero-date reveal">22 <span>·</span> 08 <span>·</span> 2026</p>
-    <p class="hero-place reveal" data-en="Saydet Al Najat Church — Mina Byblos, Jbeil" data-ar="كنيسة سيّدة النجاة — الميناء، جبيل">Saydet Al Najat Church — Mina Byblos, Jbeil</p>
+    <p class="hero-date reveal">
+      <span>22</span><span class="date-sep">&middot;</span><span>08</span><span class="date-sep">&middot;</span><span>2026</span>
+    </p>
 
-    <div class="hero-actions reveal">
-      <a class="btn btn-primary" href="#invitation" data-en="Open invitation" data-ar="افتحوا الدعوة">Open invitation</a>
-      <a class="btn btn-soft" href="#rsvp" data-en="RSVP" data-ar="تأكيد الحضور">RSVP</a>
-    </div>
-  </div>
-</section>
+    <p class="hero-place reveal" data-en="Saydet Al Najat Church — Mina Byblos, Jbeil" data-ar="كنيسة سيّدة النجاة — الميناء، جبيل">Saydet Al Najat Church &mdash; Mina Byblos, Jbeil</p>
 
-<!-- INVITATION / FAMILY WORDING -->
-<section class="invitation panel" id="invitation">
-  <div class="container slim">
-    <p class="section-overline reveal" data-en="Together with their families" data-ar="مع عائلتيهما">Together with their families</p>
-    <h2 class="script-title reveal" data-en="Warmly invite you" data-ar="يدعوانكم بكل محبة">Warmly invite you</h2>
-    <p class="invite-copy reveal" data-en="to celebrate the sacrament of love and the joyful union of their hearts." data-ar="لمشاركتهما سرّ المحبة وفرح اتحاد قلبيهما.">to celebrate the sacrament of love and the joyful union of their hearts.</p>
-
-    <div class="couple-card reveal">
-      <img src="images/hero.jpg" alt="Salim and Sandrella" />
-      <div class="couple-card-body">
-        <p class="card-kicker" data-en="A love worth the wait" data-ar="حبٌّ يستحق الانتظار">A love worth the wait</p>
-        <h3 data-en="Salim & Sandrella" data-ar="سليم وسندريلا">Salim &amp; Sandrella</h3>
-        <p data-en="Your presence will make our day brighter, louder, and full of unforgettable memories." data-ar="وجودكم يجعل يومنا أجمل، أفرح، ومليئاً بذكريات لا تُنسى.">Your presence will make our day brighter, louder, and full of unforgettable memories.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COUNTDOWN -->
-<section class="countdown-section panel" id="countdown-section">
-  <div class="container">
-    <p class="section-overline reveal" data-en="Counting down to forever" data-ar="نعدّ الأيام للفرح الكبير">Counting down to forever</p>
     <div class="countdown reveal" id="countdown" aria-label="Countdown to the wedding">
-      <div class="cd-unit"><span class="cd-val" data-cd="d">--</span><span class="cd-lbl" data-en="Days" data-ar="يوم">Days</span></div>
-      <div class="cd-unit"><span class="cd-val" data-cd="h">--</span><span class="cd-lbl" data-en="Hours" data-ar="ساعة">Hours</span></div>
-      <div class="cd-unit"><span class="cd-val" data-cd="m">--</span><span class="cd-lbl" data-en="Minutes" data-ar="دقيقة">Minutes</span></div>
-      <div class="cd-unit"><span class="cd-val" data-cd="s">--</span><span class="cd-lbl" data-en="Seconds" data-ar="ثانية">Seconds</span></div>
+      <div class="cd-unit"><span class="cd-val" data-cd="d">--</span><span class="cd-lbl" data-en="days" data-ar="يوم">days</span></div>
+      <div class="cd-unit"><span class="cd-val" data-cd="h">--</span><span class="cd-lbl" data-en="hours" data-ar="ساعة">hours</span></div>
+      <div class="cd-unit"><span class="cd-val" data-cd="m">--</span><span class="cd-lbl" data-en="min" data-ar="دقيقة">min</span></div>
+      <div class="cd-unit"><span class="cd-val" data-cd="s">--</span><span class="cd-lbl" data-en="sec" data-ar="ثانية">sec</span></div>
+    </div>
+
+    <a class="scroll-hint" href="#story" aria-label="Scroll for our story">
+      <span data-en="scroll for our story" data-ar="تابعوا للأسفل لقصّتنا">scroll for our story</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============ OUR STORY ============ -->
+<section class="story" id="story">
+  <div class="container">
+    <p class="section-overline reveal" data-en="Our story" data-ar="قصّتنا">Our story</p>
+    <h2 class="section-title reveal" data-en="Two hearts, one quiet beginning." data-ar="قلبان، وبداية هادئة.">Two hearts, one quiet beginning.</h2>
+
+    <div class="story-grid">
+      <div class="story-photo reveal">
+        <img src="images/feature.jpg" alt="Salim and Sandrella" loading="lazy" />
+      </div>
+      <div class="story-text">
+        <!-- EDIT ME: replace these paragraphs with Salim & Sandrella's real story -->
+        <div class="lang-en">
+          <p class="reveal">It started the way the best stories do, not with fireworks, but with laughter that nobody else heard. A small moment, a shared glance, and slowly the world got a little softer around the edges.</p>
+          <p class="reveal">Years later, that same laughter still finds its way home. On 22 August 2026, in the of Saydet Al Najat Church in Mina Byblos, Jbeil, we&rsquo;ll promise out loud what our hearts have been quietly saying for a long while, and we&rsquo;d love for you to be there.</p>
+        </div>
+        <div class="lang-ar">
+          <p class="reveal">بدأت قصّتنا كما تبدأ أجمل القصص، لا بالضجيج، بل بضحكةٍ لم يسمعها سوانا. لحظةٌ صغيرة، نظرةٌ مشتركة، وشيئاً فشيئاً صار العالم أكثر دفئاً.</p>
+          <p class="reveal">بعد سنين، لا تزال تلك الضحكة تجد طريقها إلى البيت. في 22 آب 2026، في كنيسة سيّدة النجاة في الميناء، جبيل، سنُعلن بصوتٍ عالٍ ما همست به قلوبنا منذ زمن، ويسعدنا أن تكونوا بجانبنا.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- THE GATHERING -->
-<section class="timeline panel" id="gathering">
+
+<!-- ============ THE DAY ============ -->
+<section class="theday" id="theday">
   <div class="container">
-    <p class="section-overline reveal" data-en="The Gathering" data-ar="التجمّع">The Gathering</p>
-    <h2 class="section-title reveal" data-en="The joy begins with zaffe, drums, and family." data-ar="يبدأ الفرح بالزفّة، الطبول، والعائلة.">The joy begins with zaffe, drums, and family.</h2>
+    <p class="section-overline reveal" data-en="The day" data-ar="اليوم">The day</p>
+    <h2 class="section-title reveal" data-en="August 22, 2026" data-ar="22 آب 2026">August 22, 2026</h2>
 
-    <div class="split-card reveal">
-      <div class="split-head">
-        <span class="time-pill">3:00 p.m.</span>
-        <p data-en="The festivities will commence with a gathering at the groom's and bride's places." data-ar="تبدأ الاحتفالات بتجمّع عند العريس والعروس.">The festivities will commence with a gathering at the groom's and bride's places.</p>
-      </div>
-      <div class="split-grid">
-        <article class="place-card">
-          <p class="card-kicker" data-en="Groom's place" data-ar="عند العريس">Groom's place</p>
-          <h3 data-en="Salim's Tal3a" data-ar="طلعة سليم">Salim's Tal3a</h3>
-          <p data-en="From a friend's house in Kahloon" data-ar="من بيت الأصحاب في كحلون">From a friend's house in Kahloon</p>
-          <small data-en="Mount Liban, Nammoura · Keserwan" data-ar="مون ليبان، النمورة · كسروان">Mount Liban, Nammoura · Keserwan</small>
-          <a class="btn btn-map" href="https://maps.app.goo.gl/FtuUHyxxWCFuXnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Location Map" data-ar="خريطة الطريق">Location Map</a>
-        </article>
+    <div class="day-cards">
+      <article class="day-card day-card-wide reveal">
+        <p class="card-eyebrow" data-en="Procession · Zaffe" data-ar="طلعة العريس والعروس">Procession &middot; Zaffe</p>
+        <h3 data-en="Tal3et El Aris w El Arous" data-ar="طلعة العريس والعروس">Tal3et El Aris w El Arous</h3>
+        <p class="card-time">15:00</p>
 
-        <article class="place-card">
-          <p class="card-kicker" data-en="Bride's place" data-ar="عند العروس">Bride's place</p>
-          <h3 data-en="Sandrella's Tal3a" data-ar="طلعة سندريلا">Sandrella's Tal3a</h3>
-          <p data-en="From the family home" data-ar="من بيت العروس">From the family home</p>
-          <small data-en="Family, music, and happy tears" data-ar="عائلة، موسيقى، ودموع فرح">Family, music, and happy tears</small>
-          <a class="btn btn-map" href="https://maps.app.goo.gl/FtuUHyxxWCFuXnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Location Map" data-ar="خريطة الطريق">Location Map</a>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="tal3a-grid">
+          <div class="tal3a-side">
+            <p class="tal3a-label" data-en="Salim's tal3a" data-ar="طلعة العريس">Salim&rsquo;s tal3a</p>
+            <p class="tal3a-place" data-en="From friends house in Kahloon" data-ar="من بيت الأصحاب في كحلون">From a friend&rsquo;s house in Kahloon</p>
+            <p class="tal3a-sub" data-en="Mount Liban, Nammoura · Keserwan" data-ar="مون ليبان، النمورة · كسروان">Mount Liban, Nammoura &middot; Keserwan</p>
+            <a class="btn btn-ghost btn-sm" href="https://maps.app.goo.gl/FtuUHyxxWCFuXnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Get directions" data-ar="خريطة الطريق">Get directions</a>
+          </div>
 
-<!-- CELEBRATION -->
-<section class="celebration panel" id="celebration">
-  <div class="container">
-    <p class="section-overline reveal" data-en="The Celebration" data-ar="الاحتفال">The Celebration</p>
-    <h2 class="section-title reveal" data-en="One day, two beautiful moments." data-ar="يوم واحد، ولحظتان من الجمال.">One day, two beautiful moments.</h2>
+          <div class="tal3a-divider" aria-hidden="true"></div>
 
-    <div class="event-grid">
-      <article class="event-card reveal">
-        <img src="images/feature.jpg" alt="Wedding ceremony" loading="lazy" />
-        <div class="event-card-body">
-          <p class="card-kicker" data-en="Wedding Ceremony" data-ar="حفل الإكليل">Wedding Ceremony</p>
-          <h3 data-en="Saydet Al Najat Church" data-ar="كنيسة سيّدة النجاة">Saydet Al Najat Church</h3>
-          <p class="event-time">7:00 p.m.</p>
-          <p data-en="Mina Byblos, Jbeil · Lebanon" data-ar="الميناء، جبيل · لبنان">Mina Byblos, Jbeil · Lebanon</p>
-          <div class="card-actions">
-            <a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Saydet+Al+Najat+Mina+Byblos+Jbeil+Lebanon" target="_blank" rel="noopener" data-en="Location Map" data-ar="خريطة الطريق">Location Map</a>
-            <button class="btn btn-map" id="addCalendar" type="button" data-en="Add to Calendar" data-ar="أضف إلى التقويم">Add to Calendar</button>
+          <div class="tal3a-side">
+            <p class="tal3a-label" data-en="Sandrella's tal3a" data-ar="طلعة العروس">Sandrella&rsquo;s tal3a</p>
+            <p class="tal3a-place" data-en="From the family home" data-ar="من بيت العروس">From the family home</p>
+            <a class="btn btn-ghost btn-sm" href="https://maps.app.goo.gl/FtuUHyxxWCFuXnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Get directions" data-ar="خريطة الطريق">Get directions</a>
           </div>
         </div>
+
+        <p class="card-note" data-en="The traditional Lebanese send-off: drums, dabke, and family. Each side starts at its own home before everyone meets at the church." data-ar="بداية اليوم على الطريقة اللبنانية — الدبكة، الزفّة، والعائلة. كل فريق يبدأ من بيته قبل أن يلتقي الجميع في الكنيسة.">The traditional Lebanese send-off &mdash; drums, dabke, and family. Each side starts at its own home before everyone meets at the church.</p>
       </article>
 
-      <article class="event-card reveal">
-        <img src="images/gallery-01.jpg" alt="Wedding reception" loading="lazy" />
-        <div class="event-card-body">
-          <p class="card-kicker" data-en="Dinner & Reception" data-ar="العشاء والسهرة">Dinner &amp; Reception</p>
-          <h3 data-en="Church Garden" data-ar="حديقة الكنيسة">Church Garden</h3>
-          <p class="event-time" data-en="Immediately after" data-ar="مباشرةً بعد الإكليل">Immediately after</p>
-          <p data-en="Same address — just follow the music." data-ar="نفس العنوان — اتبعوا صوت الموسيقى.">Same address — just follow the music.</p>
-          <p class="joy-note" data-en="Dinner, dancing, dabke, and a night full of love." data-ar="عشاء، رقص، دبكة، وليلة مليئة بالمحبة.">Dinner, dancing, dabke, and a night full of love.</p>
+      <article class="day-card reveal">
+        <p class="card-eyebrow" data-en="Ceremony" data-ar="حفل الإكليل">Ceremony</p>
+        <h3 data-en="Saydet Al Najat Church" data-ar="كنيسة سيّدة النجاة">Saydet Al Najat Church</h3>
+        <p class="card-time">19:00</p>
+        <p class="card-place" data-en="Mina Byblos, Jbeil · Lebanon" data-ar="الميناء بيبلوس، جبيل · لبنان">Mina Byblos, Jbeil &middot; Lebanon</p>
+        <div class="card-actions">
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Saydet+Al+Najat+Mina+Byblos+Jbeil+Lebanon" target="_blank" rel="noopener" data-en="Get directions" data-ar="خريطة الطريق">Get directions</a>
+          <button class="btn btn-ghost" id="addCalendar" type="button" data-en="Add to calendar" data-ar="أضف إلى التقويم">Add to calendar</button>
         </div>
       </article>
+
+      <article class="day-card reveal">
+        <p class="card-eyebrow" data-en="Reception" data-ar="السهرة">Reception</p>
+        <h3 data-en="Church Garden" data-ar="حديقة الكنيسة">Church Garden</h3>
+        <p class="card-time" data-en="Immediately after" data-ar="مباشرةً بعد الإكليل">Immediately after</p>
+        <p class="card-place" data-en="Same address — just step outside" data-ar="نفس العنوان — اخرجوا إلى الحديقة">Same address &mdash; just step outside</p>
+        <p class="card-note" data-en="Join us for a cocktail celebration after the &ldquo;I do.&rdquo;" data-ar="انضمّوا إلينا لاحتفال كوكتيل بعد كلمة «نعم».">Join us for a cocktail celebration after the &ldquo;I do.&rdquo;</p>
+      </article>
     </div>
+
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery panel" id="gallery">
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
   <div class="container">
-    <p class="section-overline reveal" data-en="Little moments" data-ar="لحظات صغيرة">Little moments</p>
-    <h2 class="section-title reveal" data-en="Before the big yes." data-ar="قبل كلمة نعم الكبيرة.">Before the big yes.</h2>
+    <p class="section-overline reveal" data-en="Moments" data-ar="لحظات">Moments</p>
+    <h2 class="section-title reveal" data-en="A little of us, before the big day." data-ar="لمحةٌ من قصّتنا قبل اليوم الكبير.">A little of us, before the big day.</h2>
+
     <div class="photo-stack" id="photoStack">
       <figure class="photo"><img src="images/gallery-01.jpg" alt="" loading="lazy" /></figure>
       <figure class="photo"><img src="images/gallery-02.jpg" alt="" loading="lazy" /></figure>
@@ -186,66 +170,66 @@
   </div>
 </section>
 
-<!-- RSVP -->
-<section class="rsvp panel" id="rsvp">
-  <div class="container slim">
-    <p class="section-overline reveal" data-en="Be Our Guest" data-ar="كونوا ضيوفنا">Be Our Guest</p>
-    <h2 class="script-title reveal" data-en="Will you celebrate with us?" data-ar="هل ستحتفلون معنا؟">Will you celebrate with us?</h2>
-    <p class="section-lead reveal" data-en="Please confirm before 1 August 2026. Your reply will open as a WhatsApp message." data-ar="يرجى تأكيد الحضور قبل 1 آب 2026. سيتم فتح الرد كرسالة واتساب.">Please confirm before 1 August 2026. Your reply will open as a WhatsApp message.</p>
+
+<!-- Gift / Whish section removed for launch — can be added back later -->
+
+
+<!-- ============ RSVP ============ -->
+<section class="rsvp" id="rsvp">
+  <div class="container narrow">
+    <p class="section-overline reveal" data-en="RSVP" data-ar="تأكيد الحضور">RSVP</p>
+    <h2 class="section-title reveal" data-en="Will you be there?" data-ar="هل ستكونون معنا؟">Will you be there?</h2>
+    <p class="section-lead reveal" data-en="Fill in your details, then tap to message us on WhatsApp." data-ar="املأوا الحقول ثم اضغطوا لمراسلتنا عبر واتساب.">Fill in your details, then tap to message us on WhatsApp.</p>
 
     <form class="rsvp-form reveal" id="rsvpForm" onsubmit="return false;">
-      <label class="rsvp-field full">
-        <span class="rsvp-label" data-en="Name(s)" data-ar="الأسماء">Name(s)</span>
-        <input type="text" id="rsvpName" autocomplete="name" required placeholder="" />
-      </label>
-
       <label class="rsvp-field">
-        <span class="rsvp-label" data-en="Are you attending?" data-ar="هل ستحضرون؟">Are you attending?</span>
-        <select id="rsvpStatus" required>
-          <option value="" data-en="Select" data-ar="اختاروا">Select</option>
-          <option value="yes" data-en="Yes, attending" data-ar="نعم، سنحضر">Yes, attending</option>
-          <option value="no" data-en="Not attending" data-ar="لن نستطيع الحضور">Not attending</option>
-        </select>
+        <span class="rsvp-label" data-en="Your name" data-ar="الاسم">Your name</span>
+        <input type="text" id="rsvpName" autocomplete="name" required />
       </label>
-
-      <label class="rsvp-field">
-        <span class="rsvp-label" data-en="Number of attendees" data-ar="عدد الحضور">Number of attendees</span>
+      <label class="rsvp-field rsvp-field-small">
+        <span class="rsvp-label" data-en="Guests" data-ar="عدد الحضور">Guests</span>
         <input type="number" id="rsvpCount" min="1" max="20" value="1" inputmode="numeric" required />
-      </label>
-
-      <label class="rsvp-field full">
-        <span class="rsvp-label" data-en="Share your love and wishes" data-ar="اكتبوا كلمة حلوة">Share your love and wishes</span>
-        <textarea id="rsvpWish" maxlength="120" rows="3"></textarea>
-        <small class="wish-count"><span id="wishCount">0</span> / 120</small>
       </label>
     </form>
 
     <div class="rsvp-buttons reveal">
-      <a class="btn btn-primary btn-big" id="rsvpSalim" href="#" target="_blank" rel="noopener" data-en="Send to Salim" data-ar="أرسلوا إلى سليم">Send to Salim</a>
-      <a class="btn btn-soft btn-big" id="rsvpSandrella" href="#" target="_blank" rel="noopener" data-en="Send to Sandrella" data-ar="أرسلوا إلى سندريلا">Send to Sandrella</a>
+      <a class="btn btn-primary btn-big" id="rsvpSalim" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="margin-inline-end:.6em;vertical-align:-.35em"><path fill="currentColor" d="M20.5 3.5A11.5 11.5 0 0 0 3.6 18.7L2 22l3.4-1.6A11.5 11.5 0 1 0 20.5 3.5Zm-8.4 17.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2 1 .9-2-.2-.3a9.4 9.4 0 1 1 6.4 2.8Zm5.4-7c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0-1.2-.5-2.3-1.5a8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.4-.5.2-.4a.5.5 0 0 0 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.4 3.9c2.6 1 2.6.7 3.1.6a2.6 2.6 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.3-.2-.6-.3Z"/></svg>
+        <span data-en="Message Salim" data-ar="راسلوا سليم">Message Salim</span>
+      </a>
+      <a class="btn btn-ghost btn-big" id="rsvpSandrella" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="margin-inline-end:.6em;vertical-align:-.35em"><path fill="currentColor" d="M20.5 3.5A11.5 11.5 0 0 0 3.6 18.7L2 22l3.4-1.6A11.5 11.5 0 1 0 20.5 3.5Zm-8.4 17.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2 1 .9-2-.2-.3a9.4 9.4 0 1 1 6.4 2.8Zm5.4-7c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0-1.2-.5-2.3-1.5a8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.4-.5.2-.4a.5.5 0 0 0 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.4 3.9c2.6 1 2.6.7 3.1.6a2.6 2.6 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.3-.2-.6-.3Z"/></svg>
+        <span data-en="Message Sandrella" data-ar="راسلوا سندريلا">Message Sandrella</span>
+      </a>
     </div>
 
-    <p class="contact-line reveal">
-      <span data-en="To update your response later, contact Salim or Sandrella directly." data-ar="لتعديل الرد لاحقاً، تواصلوا مباشرةً مع سليم أو سندريلا.">To update your response later, contact Salim or Sandrella directly.</span>
+    <p class="rsvp-foot reveal">
+      <span class="lang-en">Please reply before <strong>1 August 2026</strong>.</span>
+      <span class="lang-ar">يُرجى الرد قبل <strong>1 آب 2026</strong>.</span>
     </p>
   </div>
 </section>
 
-<footer class="site-foot panel">
-  <div class="container slim">
-    <div class="footer-monogram">S <span>&amp;</span> S</div>
-    <p class="foot-line" data-en="A love worth the wait." data-ar="حبٌّ يستحق الانتظار.">A love worth the wait.</p>
-    <p class="foot-mini" data-en="22 August 2026 · Saydet Al Najat Church · Mina Byblos, Jbeil" data-ar="22 آب 2026 · كنيسة سيّدة النجاة · الميناء، جبيل">22 August 2026 · Saydet Al Najat Church · Mina Byblos, Jbeil</p>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="container">
+    <svg class="monogram" viewBox="0 0 120 60" aria-hidden="true">
+      <text x="50%" y="58%" text-anchor="middle" font-family="Italiana, serif" font-size="42" fill="none" stroke="currentColor" stroke-width="0.8">S &amp; S</text>
+    </svg>
+    <p class="foot-line" data-en="With love — see you in Jbeil." data-ar="مع المحبّة — نراكم في جبيل.">With love &mdash; see you in Jbeil.</p>
+    <p class="foot-mini" data-en="22 August 2026 · Saydet Al Najat Church, Mina Byblos, Jbeil · 19:00" data-ar="22 آب 2026 · كنيسة سيّدة النجاة، الميناء بيبلوس — جبيل · 19:00">22 August 2026 &middot; Saydet Al Najat Church, Mina Byblos, Jbeil &middot; 19:00</p>
   </div>
 </footer>
 
+<!-- ============ MUSIC BUTTON ============ -->
 <button class="music-btn" id="musicBtn" type="button" aria-label="Play background music" hidden>
-  <svg class="note-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-    <path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="6" cy="18" r="3" fill="currentColor"/>
-    <circle cx="18" cy="16" r="3" fill="currentColor"/>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <path class="note-icon" fill="currentColor" d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle class="note-icon" cx="6" cy="18" r="3" fill="currentColor"/>
+    <circle class="note-icon" cx="18" cy="16" r="3" fill="currentColor"/>
   </svg>
-  <svg class="pause-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" hidden>
+  <svg class="pause-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="display:none">
     <rect x="6" y="5" width="4" height="14" fill="currentColor"/>
     <rect x="14" y="5" width="4" height="14" fill="currentColor"/>
   </svg>
@@ -254,11 +238,15 @@
   <source src="music/song.mp3" type="audio/mpeg" />
 </audio>
 
+
+<!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" hidden>
   <button class="lb-close" type="button" aria-label="Close">&times;</button>
   <img alt="" />
 </div>
 
+
+<!-- ============ SCRIPTS ============ -->
 <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
