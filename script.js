@@ -6,6 +6,9 @@ const CONFIG = {
   whatsappSalim: "96176004496",
   whatsappSandrella: "9613109575",
   weddingISO: "2026-08-22T19:00:00+03:00",
+  // Optional: paste your Google Apps Script web-app URL here to auto-save
+  // each RSVP into a Google Sheet. Leave "" to disable. See RSVP-SHEET-SETUP.md.
+  rsvpSheetUrl: "",
 };
 
 /* ---------- Language toggle EN ⇄ AR ---------- */
@@ -126,100 +129,132 @@ const CONFIG = {
   window.setInterval(tick, 1000);
 })();
 
-/* ---------- RSVP WhatsApp builder ---------- */
+/* ---------- RSVP — in-page form → Google Sheet ---------- */
 (function rsvp() {
-  const btnSalim = document.getElementById("rsvpSalim");
-  const btnSandrella = document.getElementById("rsvpSandrella");
+  const form = document.getElementById("rsvpForm");
   const nameInput = document.getElementById("rsvpName");
   const countInput = document.getElementById("rsvpCount");
-  const statusInput = document.getElementById("rsvpStatus");
+  const countField = document.getElementById("rsvpCountField");
   const wishInput = document.getElementById("rsvpWish");
   const wishCount = document.getElementById("wishCount");
+  const submitBtn = document.getElementById("rsvpSubmit");
+  const thanks = document.getElementById("rsvpThanks");
 
-  if (wishInput) {
-    wishInput.addEventListener("input", () => {
-      if (wishCount) {
-        wishCount.textContent = String(wishInput.value.length);
-      }
-    });
-  }
+  if (!form || !nameInput || !submitBtn) return;
 
   function currentLang() {
     return document.documentElement.lang === "ar" ? "ar" : "en";
   }
 
-  function buildMessage(toName, partnerName) {
-    const lang = currentLang();
-    const name = (nameInput && nameInput.value ? nameInput.value : "").trim();
-    const count = Math.max(1, parseInt(countInput && countInput.value, 10) || 1);
-    const status = statusInput && statusInput.value ? statusInput.value : "yes";
-    const wish = (wishInput && wishInput.value ? wishInput.value : "").trim();
-
-    if (lang === "ar") {
-      const intro = name ? `مرحبا ${toName}، أنا ${name}.` : `مرحبا ${toName}.`;
-
-      if (status === "no") {
-        return `${intro} للأسف لن نستطيع حضور زفافكم في 22 آب. ألف مبروك لك ولـ${partnerName}! ${wish ? "\nكلمتنا لكم: " + wish : ""}`;
-      }
-
-      const people = count === 1 ? "شخص واحد" : `${count} أشخاص`;
-
-      return `${intro} نؤكد حضورنا (${people}) إلى زفافكم في 22 آب. ألف مبروك لك ولـ${partnerName}! 💞${wish ? "\nكلمتنا لكم: " + wish : ""}`;
-    }
-
-    const intro = name ? `Hi ${toName}, this is ${name}.` : `Hi ${toName}.`;
-
-    if (status === "no") {
-      return `${intro} Sadly, we will not be able to attend your wedding on August 22. Congratulations to you and ${partnerName}! ${wish ? "\nOur wishes: " + wish : ""}`;
-    }
-
-    const people = count === 1 ? "1 person" : `${count} people`;
-
-    return `${intro} We confirm our attendance (${people}) at your wedding on August 22. Congratulations to you and ${partnerName}! 💞${wish ? "\nOur wishes: " + wish : ""}`;
+  function status() {
+    const checked = form.querySelector('input[name="rsvpStatus"]:checked');
+    return checked ? checked.value : "yes";
   }
 
-  function validate(e) {
-    if (nameInput && !nameInput.value.trim()) {
-      e.preventDefault();
-      nameInput.focus();
-
-      if (nameInput.reportValidity) {
-        nameInput.reportValidity();
-      }
-
-      toast(currentLang() === "ar" ? "الرجاء كتابة الاسم" : "Please type your name");
-      return false;
-    }
-
-    if (statusInput && !statusInput.value) {
-      e.preventDefault();
-      statusInput.focus();
-
-      if (statusInput.reportValidity) {
-        statusInput.reportValidity();
-      }
-
-      toast(currentLang() === "ar" ? "الرجاء اختيار الحضور" : "Please select attendance");
-      return false;
-    }
-
-    return true;
-  }
-
-  function attach(btn, toNumber, toName, partnerName) {
-    if (!btn) return;
-
-    btn.addEventListener("click", (e) => {
-      if (!validate(e)) return;
-
-      btn.href = `https://wa.me/${toNumber}?text=${encodeURIComponent(
-        buildMessage(toName, partnerName)
-      )}`;
+  /* Live character counter for the wishes field */
+  if (wishInput && wishCount) {
+    wishInput.addEventListener("input", () => {
+      wishCount.textContent = String(wishInput.value.length);
     });
   }
 
-  attach(btnSalim, CONFIG.whatsappSalim, "Salim", "Sandrella");
-  attach(btnSandrella, CONFIG.whatsappSandrella, "Sandrella", "Salim");
+  /* Hide the guest count when the answer is "no" */
+  function syncCountVisibility() {
+    if (countField) countField.hidden = status() === "no";
+  }
+
+  form.querySelectorAll('input[name="rsvpStatus"]').forEach((radio) => {
+    radio.addEventListener("change", syncCountVisibility);
+  });
+
+  syncCountVisibility();
+
+  /* WhatsApp fallback message — only used if no sheet URL is configured */
+  function whatsappFallbackMessage() {
+    const lang = currentLang();
+    const name = nameInput.value.trim();
+    const count = Math.max(1, parseInt(countInput && countInput.value, 10) || 1);
+    const wish = (wishInput && wishInput.value ? wishInput.value : "").trim();
+
+    if (lang === "ar") {
+      const intro = name ? `مرحبا، أنا ${name}.` : "مرحبا.";
+      if (status() === "no") {
+        return `${intro} للأسف لن نستطيع حضور زفاف سليم وسندريلا في 22 آب. ألف مبروك!${wish ? "\nكلمتنا لكم: " + wish : ""}`;
+      }
+      const people = count === 1 ? "شخص واحد" : `${count} أشخاص`;
+      return `${intro} نؤكد حضورنا (${people}) إلى زفاف سليم وسندريلا في 22 آب. ألف مبروك! 💞${wish ? "\nكلمتنا لكم: " + wish : ""}`;
+    }
+
+    const intro = name ? `Hi, this is ${name}.` : "Hi.";
+    if (status() === "no") {
+      return `${intro} Sadly we can't attend Salim & Sandrella's wedding on August 22. Congratulations!${wish ? "\nOur wishes: " + wish : ""}`;
+    }
+    const people = count === 1 ? "1 person" : `${count} people`;
+    return `${intro} We confirm our attendance (${people}) at Salim & Sandrella's wedding on August 22. Congratulations! 💞${wish ? "\nOur wishes: " + wish : ""}`;
+  }
+
+  function showThanks() {
+    const declined = status() === "no";
+    const yesLine = thanks ? thanks.querySelector(".thanks-yes") : null;
+    const noLine = thanks ? thanks.querySelector(".thanks-no") : null;
+
+    if (yesLine) yesLine.hidden = declined;
+    if (noLine) noLine.hidden = !declined;
+
+    if (thanks) {
+      form.hidden = true;
+      thanks.hidden = false;
+      thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  function send() {
+    const payload = {
+      name: nameInput.value.trim(),
+      attending: status() === "no" ? "No" : "Yes",
+      guests: status() === "no" ? 0 : Math.max(1, parseInt(countInput && countInput.value, 10) || 1),
+      wish: (wishInput && wishInput.value ? wishInput.value : "").trim(),
+      lang: currentLang(),
+    };
+
+    /* No sheet configured yet → fall back to WhatsApp so nothing is lost */
+    if (!CONFIG.rsvpSheetUrl) {
+      const url = `https://wa.me/${CONFIG.whatsappSalim}?text=${encodeURIComponent(
+        whatsappFallbackMessage()
+      )}`;
+      window.open(url, "_blank", "noopener");
+      showThanks();
+      return;
+    }
+
+    submitBtn.disabled = true;
+
+    fetch(CONFIG.rsvpSheetUrl, {
+      method: "POST",
+      mode: "no-cors",
+      keepalive: true,
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+    })
+      .catch(() => {})
+      .finally(() => {
+        submitBtn.disabled = false;
+        showThanks();
+      });
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (!nameInput.value.trim()) {
+      nameInput.focus();
+      if (nameInput.reportValidity) nameInput.reportValidity();
+      toast(currentLang() === "ar" ? "الرجاء كتابة الاسم" : "Please type your name");
+      return;
+    }
+
+    send();
+  });
 })();
 
 /* ---------- Three.js celebratory petals ---------- */

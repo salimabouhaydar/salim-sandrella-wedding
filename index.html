@@ -33,6 +33,12 @@
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
   <div class="hero-inner">
+    <div class="hero-logo reveal" aria-hidden="true">
+      <svg viewBox="0 0 130 70" role="img">
+        <text x="50%" y="62%" text-anchor="middle" font-family="Italiana, serif" font-size="46" fill="none" stroke="currentColor" stroke-width="0.9">S &amp; S</text>
+      </svg>
+    </div>
+
     <p class="hero-overline reveal" data-en="Save the date" data-ar="احفظوا التاريخ">Save the date</p>
 
     <h1 class="hero-names">
@@ -63,6 +69,34 @@
       <span data-en="scroll for our story" data-ar="تابعوا للأسفل لقصّتنا">scroll for our story</span>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>
+  </div>
+</section>
+
+
+<!-- ============ FAMILIES / PARENTS ============ -->
+<section class="parents" id="parents">
+  <div class="container narrow">
+    <p class="parents-intro reveal" data-en="With hearts full of joy," data-ar="بقلوبٍ مليئة بالفرح،">With hearts full of joy,</p>
+
+    <div class="parents-grid">
+      <div class="parents-side reveal">
+        <p class="parents-eyebrow" data-en="The groom's parents" data-ar="والدا العريس">The groom&rsquo;s parents</p>
+        <p class="parents-name" data-en="Mr. Mikhael Abou Haydar" data-ar="السيّد ميخائيل أبو حيدر">Mr. Mikhael Abou Haydar</p>
+        <p class="parents-amp" aria-hidden="true">&amp;</p>
+        <p class="parents-name" data-en="Mrs. Antoinette Abdallah" data-ar="السيّدة أنطوانيت عبدالله">Mrs. Antoinette Abdallah</p>
+      </div>
+
+      <div class="parents-divider" aria-hidden="true"></div>
+
+      <div class="parents-side reveal">
+        <p class="parents-eyebrow" data-en="The bride's parents" data-ar="والدا العروس">The bride&rsquo;s parents</p>
+        <p class="parents-name" data-en="Mr. Marwan El Haber" data-ar="السيّد مروان الهبر">Mr. Marwan El Haber</p>
+        <p class="parents-amp" aria-hidden="true">&amp;</p>
+        <p class="parents-name" data-en="Mrs. Nayla Rahbani" data-ar="السيّدة نايلا الرحباني">Mrs. Nayla Rahbani</p>
+      </div>
+    </div>
+
+    <p class="parents-foot reveal" data-en="request your presence as their children are united in marriage." data-ar="يتشرّفون بدعوتكم لمشاركتهم فرحة زفاف ولديهما.">request the honour of your presence as their children are united in marriage.</p>
   </div>
 </section>
 
@@ -117,8 +151,8 @@
 
           <div class="tal3a-side">
             <p class="tal3a-label" data-en="Sandrella's tal3a" data-ar="طلعة العروس">Sandrella&rsquo;s tal3a</p>
-            <p class="tal3a-place" data-en="From the family home" data-ar="من بيت العروس">From the family home</p>
-            <a class="btn btn-ghost btn-sm" href="https://maps.app.goo.gl/FtuUHyxxWCFuXnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Get directions" data-ar="خريطة الطريق">Get directions</a>
+            <p class="tal3a-place" data-en="From the Bride House in Kahloon" data-ar="من بيت العروس في كحلون">From the Bride House in Kahloon</p>
+            <a class="btn btn-ghost btn-sm" href="https://maps.app.goo.gl/FtuUHyxxWCFuXwnjS9?g_st=iw" target="_blank" rel="noopener" data-en="Get directions" data-ar="خريطة الطريق">Get directions</a>
           </div>
         </div>
 
@@ -163,9 +197,6 @@
       <figure class="photo"><img src="images/gallery-05.jpg" alt="" loading="lazy" /></figure>
       <figure class="photo"><img src="images/gallery-06.jpg" alt="" loading="lazy" /></figure>
       <figure class="photo"><img src="images/gallery-07.jpg" alt="" loading="lazy" /></figure>
-      <figure class="photo"><img src="images/gallery-08.jpg" alt="" loading="lazy" /></figure>
-      <figure class="photo"><img src="images/gallery-09.jpg" alt="" loading="lazy" /></figure>
-      <figure class="photo"><img src="images/gallery-10.jpg" alt="" loading="lazy" /></figure>
     </div>
   </div>
 </section>
@@ -182,25 +213,43 @@
     <p class="section-lead reveal" data-en="Fill in your details, then tap to message us on WhatsApp." data-ar="املأوا الحقول ثم اضغطوا لمراسلتنا عبر واتساب.">Fill in your details, then tap to message us on WhatsApp.</p>
 
     <form class="rsvp-form reveal" id="rsvpForm" onsubmit="return false;">
-      <label class="rsvp-field">
+      <label class="rsvp-field rsvp-field-full">
         <span class="rsvp-label" data-en="Your name" data-ar="الاسم">Your name</span>
         <input type="text" id="rsvpName" autocomplete="name" required />
       </label>
-      <label class="rsvp-field rsvp-field-small">
+
+      <div class="rsvp-field rsvp-field-full">
+        <span class="rsvp-label" data-en="Will you join us?" data-ar="هل ستكونون معنا؟">Will you join us?</span>
+        <div class="rsvp-toggle" role="radiogroup" aria-label="Attendance">
+          <input type="radio" name="rsvpStatus" id="rsvpYes" value="yes" checked />
+          <label for="rsvpYes" data-en="Joyfully yes" data-ar="نعم بكلّ فرح">Joyfully yes</label>
+          <input type="radio" name="rsvpStatus" id="rsvpNo" value="no" />
+          <label for="rsvpNo" data-en="Sadly can't" data-ar="للأسف لا أستطيع">Sadly can&rsquo;t</label>
+        </div>
+      </div>
+
+      <label class="rsvp-field rsvp-field-small" id="rsvpCountField">
         <span class="rsvp-label" data-en="Guests" data-ar="عدد الحضور">Guests</span>
-        <input type="number" id="rsvpCount" min="1" max="20" value="1" inputmode="numeric" required />
+        <input type="number" id="rsvpCount" min="1" max="20" value="1" inputmode="numeric" />
       </label>
+
+      <label class="rsvp-field rsvp-field-full">
+        <span class="rsvp-label" data-en="Share your love and wishes" data-ar="شاركونا كلماتكم وتمنّياتكم">Share your love and wishes</span>
+        <textarea id="rsvpWish" maxlength="200" rows="3" placeholder=""></textarea>
+        <span class="rsvp-hint"><span id="wishCount">0</span>/200</span>
+      </label>
+
+      <button class="btn btn-primary btn-big rsvp-submit" id="rsvpSubmit" type="submit" data-en="Send RSVP" data-ar="أرسلوا التأكيد">Send RSVP</button>
     </form>
 
-    <div class="rsvp-buttons reveal">
-      <a class="btn btn-primary btn-big" id="rsvpSalim" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="margin-inline-end:.6em;vertical-align:-.35em"><path fill="currentColor" d="M20.5 3.5A11.5 11.5 0 0 0 3.6 18.7L2 22l3.4-1.6A11.5 11.5 0 1 0 20.5 3.5Zm-8.4 17.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2 1 .9-2-.2-.3a9.4 9.4 0 1 1 6.4 2.8Zm5.4-7c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0-1.2-.5-2.3-1.5a8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.4-.5.2-.4a.5.5 0 0 0 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.4 3.9c2.6 1 2.6.7 3.1.6a2.6 2.6 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.3-.2-.6-.3Z"/></svg>
-        <span data-en="Message Salim" data-ar="راسلوا سليم">Message Salim</span>
-      </a>
-      <a class="btn btn-ghost btn-big" id="rsvpSandrella" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" style="margin-inline-end:.6em;vertical-align:-.35em"><path fill="currentColor" d="M20.5 3.5A11.5 11.5 0 0 0 3.6 18.7L2 22l3.4-1.6A11.5 11.5 0 1 0 20.5 3.5Zm-8.4 17.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2 1 .9-2-.2-.3a9.4 9.4 0 1 1 6.4 2.8Zm5.4-7c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0-1.2-.5-2.3-1.5a8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.4-.5.2-.4a.5.5 0 0 0 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.4 3.9c2.6 1 2.6.7 3.1.6a2.6 2.6 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.3-.2-.6-.3Z"/></svg>
-        <span data-en="Message Sandrella" data-ar="راسلوا سندريلا">Message Sandrella</span>
-      </a>
+    <div class="rsvp-thanks" id="rsvpThanks" hidden>
+      <svg class="thanks-mark" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+        <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+        <path d="M20 33l8 8 16-18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 class="thanks-title" data-en="Thank you 💞" data-ar="شكراً لكم 💞">Thank you &#128156;</h3>
+      <p class="thanks-line thanks-yes" data-en="Your RSVP is in — we can't wait to celebrate with you. See you in Jbeil!" data-ar="تم تسجيل تأكيدكم — لا نطيق الانتظار للاحتفال معكم. نراكم في جبيل!">Your RSVP is in &mdash; see you in Jbeil!</p>
+      <p class="thanks-line thanks-no" data-en="Thank you for letting us know — you'll be missed, and you're in our hearts." data-ar="شكراً لإعلامنا — سنفتقدكم، وستبقون في قلوبنا." hidden>Thank you for letting us know &mdash; you&rsquo;ll be missed.</p>
     </div>
 
     <p class="rsvp-foot reveal">
