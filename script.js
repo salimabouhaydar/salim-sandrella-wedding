@@ -137,10 +137,12 @@ const CONFIG = {
   const countField = document.getElementById("rsvpCountField");
   const wishInput = document.getElementById("rsvpWish");
   const wishCount = document.getElementById("wishCount");
-  const submitBtn = document.getElementById("rsvpSubmit");
+  const submitBtns = Array.prototype.slice.call(
+    form ? form.querySelectorAll(".rsvp-submit") : []
+  );
   const thanks = document.getElementById("rsvpThanks");
 
-  if (!form || !nameInput || !submitBtn) return;
+  if (!form || !nameInput || !submitBtns.length) return;
 
   function currentLang() {
     return document.documentElement.lang === "ar" ? "ar" : "en";
@@ -208,39 +210,38 @@ const CONFIG = {
     }
   }
 
-  function send() {
-    const payload = {
-      name: nameInput.value.trim(),
-      attending: status() === "no" ? "No" : "Yes",
-      guests: status() === "no" ? 0 : Math.max(1, parseInt(countInput && countInput.value, 10) || 1),
-      wish: (wishInput && wishInput.value ? wishInput.value : "").trim(),
-      lang: currentLang(),
-    };
+  /* WhatsApp number for the chosen recipient (Salim or Sandrella) */
+  function numberFor(target) {
+    return target === "sandrella" ? CONFIG.whatsappSandrella : CONFIG.whatsappSalim;
+  }
 
-    /* No sheet configured yet → fall back to WhatsApp so nothing is lost */
-    if (!CONFIG.rsvpSheetUrl) {
-      const url = `https://wa.me/${CONFIG.whatsappSalim}?text=${encodeURIComponent(
-        whatsappFallbackMessage()
-      )}`;
-      window.open(url, "_blank", "noopener");
-      showThanks();
-      return;
+  function send(target) {
+    /* Always message the chosen recipient on WhatsApp so the couple both
+       have a direct reservation contact. */
+    const waUrl = `https://wa.me/${numberFor(target)}?text=${encodeURIComponent(
+      whatsappFallbackMessage()
+    )}`;
+    window.open(waUrl, "_blank", "noopener");
+
+    /* Also record the RSVP into the Sheet when configured (fire-and-forget) */
+    if (CONFIG.rsvpSheetUrl) {
+      const payload = {
+        name: nameInput.value.trim(),
+        attending: status() === "no" ? "No" : "Yes",
+        guests: status() === "no" ? 0 : Math.max(1, parseInt(countInput && countInput.value, 10) || 1),
+        wish: (wishInput && wishInput.value ? wishInput.value : "").trim(),
+        lang: currentLang(),
+      };
+      fetch(CONFIG.rsvpSheetUrl, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
     }
 
-    submitBtn.disabled = true;
-
-    fetch(CONFIG.rsvpSheetUrl, {
-      method: "POST",
-      mode: "no-cors",
-      keepalive: true,
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload),
-    })
-      .catch(() => {})
-      .finally(() => {
-        submitBtn.disabled = false;
-        showThanks();
-      });
+    showThanks();
   }
 
   form.addEventListener("submit", (e) => {
@@ -253,7 +254,8 @@ const CONFIG = {
       return;
     }
 
-    send();
+    const target = e.submitter ? e.submitter.getAttribute("data-target") : "salim";
+    send(target);
   });
 })();
 
